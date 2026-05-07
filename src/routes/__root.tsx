@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Creepy" },
+      { name: "description", content: "A cinematic landing page for a satirical Netflix-style documentary series about socially awkward men in Hollywood." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Creepy" },
+      { property: "og:description", content: "A cinematic landing page for a satirical Netflix-style documentary series about socially awkward men in Hollywood." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Creepy" },
+      { name: "twitter:description", content: "A cinematic landing page for a satirical Netflix-style documentary series about socially awkward men in Hollywood." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/UdivYYPWEfOHqLA7ILzeWrg47ue2/social-images/social-1778136531239-creepy_logo.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/UdivYYPWEfOHqLA7ILzeWrg47ue2/social-images/social-1778136531239-creepy_logo.webp" },
     ],
     links: [
       {
