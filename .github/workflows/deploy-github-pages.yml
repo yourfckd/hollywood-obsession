@@ -27,6 +27,9 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
@@ -35,6 +38,16 @@ jobs:
 
       - name: Add GitHub Pages fallback
         run: cp dist/client/index.html dist/client/404.html
+
+      - name: Validate Pages artifact
+        run: |
+          test -f dist/client/index.html
+          test -f dist/client/404.html
+          grep -q '"/hollywood-obsession/' dist/client/index.html
+          if grep -E '(<script[^>]+src|<link[^>]+href|<img[^>]+src)="/(assets|_build|src)/' dist/client/index.html; then
+            echo "Found a root-relative asset URL; expected /hollywood-obsession/." >&2
+            exit 1
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
