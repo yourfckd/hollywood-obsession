@@ -16,11 +16,12 @@ export default defineConfig({
     router: {
       basepath: "/hollywood-obsession",
     },
-    server: { entry: "index" },
+    server: { entry: "server" },
     prerender: {
+      enabled: false,
+    },
+    spa: {
       enabled: true,
-      crawlLinks: true,
-      failOnError: false,
     },
   },
 });
