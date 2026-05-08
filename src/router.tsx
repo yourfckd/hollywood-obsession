@@ -7,7 +7,7 @@ export const getRouter = () => {
 
   const router = createRouter({
     routeTree,
-    basepath: "/",
+    basepath: "/hollywood-obsession",
     trailingSlash: "never",
     context: { queryClient },
     scrollRestoration: true,
