@@ -9,6 +9,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 // Subpath static export for GitHub Pages project site:
 // https://yourfckd.github.io/hollywood-obsession/
 export default defineConfig({
+  cloudflare: false,
   vite: {
     base: "/hollywood-obsession/",
   },
