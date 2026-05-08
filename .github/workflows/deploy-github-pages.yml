@@ -36,15 +36,27 @@ jobs:
       - name: Build static site
         run: bun run build
 
-      - name: Add GitHub Pages fallback
-        run: cp dist/client/index.html dist/client/404.html
+      - name: Stage Pages output at /dist root
+        run: |
+          # TanStack Start emits the static client into dist/client.
+          # Re-stage it so the deploy artifact is a single /dist root with
+          # index.html at the top level (no /dist/client nesting).
+          rm -rf dist-pages
+          mkdir -p dist-pages
+          cp -a dist/client/. dist-pages/
+          rm -rf dist
+          mv dist-pages dist
+          # SPA fallback for deep links and refreshes on GitHub Pages.
+          cp dist/index.html dist/404.html
+          # Ensure Jekyll does not strip _-prefixed asset folders.
+          touch dist/.nojekyll
 
       - name: Validate Pages artifact
         run: |
-          test -f dist/client/index.html
-          test -f dist/client/404.html
-          grep -q '"/hollywood-obsession/' dist/client/index.html
-          if grep -E '(<script[^>]+src|<link[^>]+href|<img[^>]+src)="/(assets|_build|src)/' dist/client/index.html; then
+          test -f dist/index.html
+          test -f dist/404.html
+          grep -q '"/hollywood-obsession/' dist/index.html
+          if grep -E '(<script[^>]+src|<link[^>]+href|<img[^>]+src)="/(assets|_build|src)/' dist/index.html; then
             echo "Found a root-relative asset URL; expected /hollywood-obsession/." >&2
             exit 1
           fi
@@ -52,7 +64,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/client
+          path: dist
 
   deploy:
     environment:

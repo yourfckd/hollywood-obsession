@@ -6,15 +6,15 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// Root-based static export for GitHub Pages (Option A: custom domain or org/user
-// pages at the domain root). Assets resolve from "/", so the build is portable.
+// Subpath static export for GitHub Pages project site:
+// https://yourfckd.github.io/hollywood-obsession/
 export default defineConfig({
   vite: {
-    base: "/",
+    base: "/hollywood-obsession/",
   },
   tanstackStart: {
     router: {
-      basepath: "/",
+      basepath: "/hollywood-obsession",
     },
     server: { entry: "server" },
     prerender: {
