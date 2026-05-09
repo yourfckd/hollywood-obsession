@@ -6,16 +6,21 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// Subpath static export for GitHub Pages project site:
-// https://yourfckd.github.io/hollywood-obsession/
+// Apply the GitHub Pages subpath only when building for Pages
+// (GITHUB_PAGES=1 is set in the deploy workflow). Dev / Lovable preview
+// keep the root base so navigation, hydration, and assets resolve correctly.
+const isGhPages = process.env.GITHUB_PAGES === "1";
+const base = isGhPages ? "/hollywood-obsession/" : "/";
+const basepath = isGhPages ? "/hollywood-obsession" : "/";
+
 export default defineConfig({
   cloudflare: false,
   vite: {
-    base: "/hollywood-obsession/",
+    base,
   },
   tanstackStart: {
     router: {
-      basepath: "/hollywood-obsession",
+      basepath,
     },
     server: { entry: "server" },
     prerender: {
