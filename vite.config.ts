@@ -10,7 +10,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 // works from the repository path and from a Pages custom domain. Dev / Lovable
 // preview keep the root base so local behavior remains unchanged.
 const isGhPages = process.env.GITHUB_PAGES === "1";
-const base = isGhPages ? "./" : "/";
+const base: string = isGhPages ? "./" : "/";
 const basepath = base === "/" || base === "./" ? "/" : base.replace(/\/$/, "");
 
 export default defineConfig({
