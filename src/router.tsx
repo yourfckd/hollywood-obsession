@@ -5,13 +5,13 @@ import { routeTree } from "./routeTree.gen";
 export const getRouter = () => {
   const queryClient = new QueryClient();
 
-  // Vite injects BASE_URL from vite.config.ts `base`. Strip the trailing
-  // slash so it matches TanStack Router's basepath format ("/" or "/foo").
+  // Vite injects BASE_URL from vite.config.ts `base`; derive the browser
+  // router base from the same value the build uses for static assets.
   const isGhPages = import.meta.env.VITE_GH_PAGES === "1";
   const baseUrl = import.meta.env.BASE_URL || "/";
   const basepath = isGhPages
     ? "/"
-    : baseUrl === "/"
+    : baseUrl === "/" || baseUrl === "./"
       ? "/"
       : baseUrl.replace(/\/$/, "");
 

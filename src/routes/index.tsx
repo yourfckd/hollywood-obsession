@@ -63,6 +63,10 @@ const reviews = [
 function Index() {
   const [scrollIdx, setScrollIdx] = useState(0);
 
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const scrollEp = (dir: number) => {
     const el = document.getElementById("ep-rail");
     if (!el) return;
@@ -78,10 +82,10 @@ function Index() {
           <div className="flex items-center gap-10">
             <img src={logo} alt="CreepyStalkers Hollywood" className="h-9 w-auto md:h-11 brightness-110" />
             <nav className="hidden gap-7 text-sm font-medium text-foreground/80 md:flex">
-              <a href="#episodes" className="hover:text-primary transition-colors">Episodes</a>
-              <a href="#cast" className="hover:text-primary transition-colors">Cast</a>
-              <a href="#reviews" className="hover:text-primary transition-colors">Reviews</a>
-              <a href="#trailer" className="hover:text-primary transition-colors">Trailer</a>
+              <button type="button" onClick={() => scrollToSection("episodes")} className="appearance-none border-0 bg-transparent p-0 text-inherit hover:text-primary transition-colors">Episodes</button>
+              <button type="button" onClick={() => scrollToSection("cast")} className="appearance-none border-0 bg-transparent p-0 text-inherit hover:text-primary transition-colors">Cast</button>
+              <button type="button" onClick={() => scrollToSection("reviews")} className="appearance-none border-0 bg-transparent p-0 text-inherit hover:text-primary transition-colors">Reviews</button>
+              <button type="button" onClick={() => scrollToSection("trailer")} className="appearance-none border-0 bg-transparent p-0 text-inherit hover:text-primary transition-colors">Trailer</button>
             </nav>
           </div>
           <div className="flex items-center gap-3">
