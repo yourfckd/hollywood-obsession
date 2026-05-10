@@ -6,12 +6,12 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// Apply the GitHub Pages subpath only when building for Pages
-// (GITHUB_PAGES=1 is set in the deploy workflow). Dev / Lovable preview
-// keep the root base so navigation, hydration, and assets resolve correctly.
+// Use a relative asset base for GitHub Pages so the same verified artifact
+// works from the repository path and from a Pages custom domain. Dev / Lovable
+// preview keep the root base so local behavior remains unchanged.
 const isGhPages = process.env.GITHUB_PAGES === "1";
-const base = isGhPages ? "/hollywood-obsession/" : "/";
-const basepath = isGhPages ? "/hollywood-obsession" : "/";
+const base = isGhPages ? "./" : "/";
+const basepath = base === "/" || base === "./" ? "/" : base.replace(/\/$/, "");
 
 export default defineConfig({
   cloudflare: false,
