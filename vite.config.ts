@@ -17,6 +17,9 @@ export default defineConfig({
   cloudflare: false,
   vite: {
     base,
+    define: {
+      "import.meta.env.VITE_GH_PAGES": JSON.stringify(isGhPages ? "1" : ""),
+    },
   },
   tanstackStart: {
     router: {
