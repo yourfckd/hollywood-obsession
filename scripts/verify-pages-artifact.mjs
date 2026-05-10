@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
-import { join, relative } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 
 const distDir = "dist";
 const requiredFiles = ["index.html", "404.html", ".nojekyll"];
@@ -16,6 +16,8 @@ const isExternalOrInline = (value) =>
 
 const normalizeReference = (value) => value.trim().replace(/^['"]|['"]$/g, "").split(/[?#]/)[0];
 
+const distRoot = resolve(distDir);
+
 const validateReference = (fromFile, rawValue, context) => {
   const value = normalizeReference(rawValue);
 
@@ -26,14 +28,14 @@ const validateReference = (fromFile, rawValue, context) => {
     return;
   }
 
-  if (value.startsWith("..")) {
+  if (!assetFileExtensions.test(value)) return;
+
+  const target = resolve(distDir, dirname(fromFile), value);
+  if (target !== distRoot && !target.startsWith(`${distRoot}/`)) {
     fail(`${fromFile}: ${context} escapes the build base with "${rawValue}".`);
     return;
   }
 
-  if (!assetFileExtensions.test(value)) return;
-
-  const target = join(distDir, value.replace(/^\.\//, ""));
   if (!existsSync(target)) {
     fail(`${fromFile}: ${context} references missing asset "${rawValue}".`);
   }
