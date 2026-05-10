@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Play, Plus, Info, ChevronLeft, ChevronRight, Star, Eye, Volume2 } from "lucide-react";
+import { Play, ChevronLeft, ChevronRight, Star, Volume2 } from "lucide-react";
 import logo from "@/assets/creepy-logo.png";
 import hero from "@/assets/hero.jpg";
 import ep1 from "@/assets/ep1.jpg";
@@ -95,77 +95,27 @@ function Index() {
         </div>
       </header>
 
-      {/* HERO */}
-      <section className="relative min-h-screen w-full overflow-hidden film-grain pt-24">
-        {/* Background image — full bleed */}
-        <div className="absolute inset-0">
-          <img
-            src={hero}
-            alt="Hollywood yoga studio at golden hour"
-            width={1920}
-            height={1080}
-            className="h-full w-full object-cover object-center"
-          />
-          {/* Cinematic gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
+      {/* HERO — rebuilt from scratch */}
+      <section className="relative h-screen w-full overflow-hidden">
+        <img
+          src={hero}
+          alt="CreepyStalkers: Hollywood"
+          width={1920}
+          height={1080}
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+
+        <div className="relative z-10 mx-auto flex h-full max-w-[1600px] flex-col items-start justify-end px-6 pb-20 md:px-12 md:pb-28">
+          <h1 className="font-display text-5xl font-black leading-[0.95] text-cream drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)] md:text-7xl lg:text-8xl">
+            CreepyStalkers: <span className="italic text-gradient-gold">Hollywood</span>
+          </h1>
+          <button className="mt-8 flex items-center gap-2.5 rounded-md bg-cream px-8 py-3.5 text-sm font-bold text-background shadow-[var(--shadow-glow)] transition hover:scale-[1.03] hover:brightness-110">
+            <Play className="h-5 w-5 fill-background" /> Watch Trailer
+          </button>
         </div>
 
-        {/* Lens flares */}
-        <div className="lens-flare drift left-[55%] top-[30%] h-[400px] w-[400px]" />
-        <div className="lens-flare left-[70%] top-[55%] h-[200px] w-[200px] opacity-60" />
-
-        {/* REC indicator */}
-        <div className="absolute right-6 top-28 z-20 flex items-center gap-2 rounded border border-rec/40 bg-background/60 px-3 py-1.5 backdrop-blur md:right-10">
-          <span className="rec-dot h-2.5 w-2.5 rounded-full bg-rec shadow-[0_0_10px_var(--rec)]" />
-          <span className="text-xs font-bold tracking-[0.25em] text-rec">REC</span>
-          <span className="text-xs font-mono text-foreground/60">00:47:12</span>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-[1600px] items-center px-6 md:px-12">
-          <div className="max-w-2xl fade-up">
-            <img src={logo} alt="CreepyStalkers Hollywood" className="mb-8 h-20 w-auto md:h-28 drop-shadow-[0_4px_30px_rgba(0,0,0,0.6)]" />
-
-            <div className="mb-5 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-foreground/80">
-              <span className="rounded border border-foreground/40 px-2 py-0.5">TV-MA</span>
-              <span className="text-primary">★ #1 in Hollywood</span>
-              <span>2026 · Limited Series · 6 Episodes</span>
-            </div>
-
-            <h1 className="font-display text-5xl font-black leading-[0.95] text-cream md:text-7xl lg:text-[5.5rem]">
-              8 Nerds. <br />
-              1 City. <br />
-              <span className="italic text-gradient-gold">Unlimited Delusion.</span>
-            </h1>
-
-            <p className="mt-7 max-w-xl text-base font-light leading-relaxed text-foreground/80 md:text-lg">
-              Follow Hollywood's most emotionally investigative men as they attempt romance,
-              enlightenment, and accidental eye contact — one yoga class at a time.
-            </p>
-
-            <div className="mt-9 flex flex-wrap items-center gap-3">
-              <button className="group flex items-center gap-2.5 rounded-md bg-cream px-7 py-3.5 text-sm font-bold text-background shadow-[var(--shadow-glow)] transition hover:scale-[1.03] hover:brightness-110">
-                <Play className="h-5 w-5 fill-background" /> Watch Trailer
-              </button>
-              <button className="flex items-center gap-2.5 rounded-md border border-foreground/30 bg-background/40 px-7 py-3.5 text-sm font-semibold text-cream backdrop-blur transition hover:bg-background/60">
-                <Info className="h-5 w-5" /> Meet The Suspects
-              </button>
-              <button className="flex h-12 w-12 items-center justify-center rounded-full border border-foreground/30 bg-background/40 backdrop-blur transition hover:bg-background/60">
-                <Plus className="h-5 w-5" />
-              </button>
-            </div>
-
-            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-foreground/60">
-              <span className="flex items-center gap-1.5"><Eye className="h-3.5 w-3.5" /> 47.2M viewers this week</span>
-              <span>·</span>
-              <span>Viewer discretion advised. Contains delusion.</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* EPISODES */}
