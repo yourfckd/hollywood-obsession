@@ -97,6 +97,16 @@ if (!existsSync(distDir) || !statSync(distDir).isDirectory()) {
       for (const urlMatch of content.matchAll(/url\(\s*([^)]*?)\s*\)/gi)) {
         validateReference(relFile, urlMatch[1], "CSS url()");
       }
+
+      for (const rootAssetMatch of content.matchAll(/(['"])(\/(?:assets|_build|images|src)\/[^'"]+)\1/gi)) {
+        validateReference(relFile, rootAssetMatch[2], "root asset string");
+      }
+
+      if (jsLikeExtensions.test(file)) {
+        for (const importMatch of content.matchAll(/import\(\s*(['"])(.*?)\1\s*\)/gi)) {
+          validateReference(relFile, importMatch[2], "dynamic import");
+        }
+      }
     }
   }
 }
