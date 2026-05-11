@@ -5,26 +5,19 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-
-// Use a relative asset base for GitHub Pages so the same verified artifact
-// works from the repository path and from a Pages custom domain. Dev / Lovable
-// preview keep the root base so local behavior remains unchanged.
-const isGhPages = process.env.GITHUB_PAGES === "1";
-const base: string = isGhPages ? "./" : "/";
-const basepath = base === "/" || base === "./" ? "/" : base.replace(/\/$/, "");
+import { fileURLToPath } from "node:url";
 
 export default defineConfig({
   cloudflare: false,
   vite: {
-    base,
-    define: {
-      "import.meta.env.VITE_GH_PAGES": JSON.stringify(isGhPages ? "1" : ""),
+    base: "/",
+    resolve: {
+      alias: {
+        "/assets": fileURLToPath(new URL("./src/assets", import.meta.url)),
+      },
     },
   },
   tanstackStart: {
-    router: {
-      basepath,
-    },
     server: { entry: "server" },
     prerender: {
       enabled: true,

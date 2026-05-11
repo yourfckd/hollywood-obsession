@@ -1,19 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Play, ChevronLeft, ChevronRight, Star, Volume2 } from "lucide-react";
-import logo from "@/assets/creepy-logo.png";
-import hero from "@/assets/hero.jpg";
-import ep1 from "@/assets/ep1.jpg";
-import ep2 from "@/assets/ep2.jpg";
-import ep3 from "@/assets/ep3.jpg";
-import ep4 from "@/assets/ep4.jpg";
-import ep5 from "@/assets/ep5.jpg";
-import ep6 from "@/assets/ep6.jpg";
-import cast1 from "@/assets/cast1.jpg";
-import cast2 from "@/assets/cast2.jpg";
-import cast3 from "@/assets/cast3.jpg";
-import cast4 from "@/assets/cast4.jpg";
-import finale from "@/assets/finale.jpg";
+import logo from "/assets/creepy-logo.png";
+import hero from "/assets/hero.jpg";
+import ep1 from "/assets/ep1.jpg";
+import ep2 from "/assets/ep2.jpg";
+import ep3 from "/assets/ep3.jpg";
+import ep4 from "/assets/ep4.jpg";
+import ep5 from "/assets/ep5.jpg";
+import ep6 from "/assets/ep6.jpg";
+import cast1 from "/assets/cast1.jpg";
+import cast2 from "/assets/cast2.jpg";
+import cast3 from "/assets/cast3.jpg";
+import cast4 from "/assets/cast4.jpg";
+import finale from "/assets/finale.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
