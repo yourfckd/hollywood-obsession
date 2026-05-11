@@ -5,11 +5,17 @@
 //     error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { fileURLToPath } from "node:url";
 
 export default defineConfig({
   cloudflare: false,
   vite: {
     base: "/",
+    resolve: {
+      alias: {
+        "/assets": fileURLToPath(new URL("./src/assets", import.meta.url)),
+      },
+    },
   },
   tanstackStart: {
     server: { entry: "server" },
