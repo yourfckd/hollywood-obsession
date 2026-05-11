@@ -26,19 +26,21 @@ const validateReference = (fromFile, rawValue, context) => {
 
   if (!assetFileExtensions.test(value)) return;
 
-  if (!value.startsWith("/")) {
-    fail(`${fromFile}: ${context} must be root-relative, got "${rawValue}".`);
-    return;
-  }
-
   if (value.startsWith("/") && !allowedRootAssetPrefixes.some((prefix) => value.startsWith(prefix))) {
     fail(`${fromFile}: ${context} uses unsupported root URL "${rawValue}".`);
     return;
   }
 
-  const target = resolve(distDir, value.slice(1));
+  const target = value.startsWith("/")
+    ? resolve(distDir, value.slice(1))
+    : resolve(distDir, dirname(fromFile), value);
   if (target !== distRoot && !target.startsWith(`${distRoot}/`)) {
     fail(`${fromFile}: ${context} escapes the build base with "${rawValue}".`);
+    return;
+  }
+
+  if (!value.startsWith("/") && !target.startsWith(resolve(distDir, "assets") + "/")) {
+    fail(`${fromFile}: ${context} resolves outside /assets with "${rawValue}".`);
     return;
   }
 
