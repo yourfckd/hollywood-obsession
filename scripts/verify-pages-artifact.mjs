@@ -4,6 +4,7 @@ import { dirname, join, relative, resolve } from "node:path";
 const distDir = "dist";
 const requiredFiles = ["index.html", "404.html", ".nojekyll"];
 const assetFileExtensions = /\.(css|js|mjs|png|jpe?g|webp|gif|svg|ico|avif|woff2?|ttf|otf|mp4|webm|json)$/i;
+const allowedRootAssetPrefixes = ["/assets/", "/favicon.ico"];
 const cssLikeExtensions = /\.css$/i;
 const jsLikeExtensions = /\.(js|mjs)$/i;
 
@@ -23,14 +24,16 @@ const validateReference = (fromFile, rawValue, context) => {
 
   if (!value || isExternalOrInline(value)) return;
 
-  if (value.startsWith("/")) {
-    fail(`${fromFile}: ${context} uses root-relative URL "${rawValue}".`);
+  if (!assetFileExtensions.test(value)) return;
+
+  if (value.startsWith("/") && !allowedRootAssetPrefixes.some((prefix) => value.startsWith(prefix))) {
+    fail(`${fromFile}: ${context} uses unsupported root URL "${rawValue}".`);
     return;
   }
 
-  if (!assetFileExtensions.test(value)) return;
-
-  const target = resolve(distDir, dirname(fromFile), value);
+  const target = value.startsWith("/")
+    ? resolve(distDir, value.slice(1))
+    : resolve(distDir, dirname(fromFile), value);
   if (target !== distRoot && !target.startsWith(`${distRoot}/`)) {
     fail(`${fromFile}: ${context} escapes the build base with "${rawValue}".`);
     return;
