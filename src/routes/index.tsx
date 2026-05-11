@@ -111,7 +111,7 @@ function Index() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
 
         <div className="relative z-10 mx-auto flex h-full max-w-[1600px] flex-col items-start justify-end px-6 pb-20 md:px-12 md:pb-28">
-          <h1 className="font-display text-5xl font-black leading-[0.95] text-cream drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)] md:text-7xl lg:text-8xl">
+          <h1 className="max-w-[11ch] font-display text-4xl font-black leading-[0.95] text-cream drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)] sm:text-5xl md:max-w-[12ch] md:text-7xl lg:text-8xl">
             CreepyStalkers: <span className="italic text-gradient-gold">Hollywood</span>
           </h1>
           <button className="mt-8 flex items-center gap-2.5 rounded-md bg-cream px-8 py-3.5 text-sm font-bold text-background shadow-[var(--shadow-glow)] transition hover:scale-[1.03] hover:brightness-110">
