@@ -1,14 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Play, ChevronLeft, ChevronRight, Star, Volume2, Flame, Users, Search, User } from "lucide-react";
+import { Play, Star, Volume2 } from "lucide-react";
 import logo from "/assets/creepy-logo.png";
-import hero from "/assets/hero-stalker.jpg";
-import ep1 from "/assets/ep1.jpg";
-import ep2 from "/assets/ep2.jpg";
-import ep3 from "/assets/ep3.jpg";
-import ep4 from "/assets/ep4.jpg";
-import ep5 from "/assets/ep5.jpg";
-import ep6 from "/assets/ep6.jpg";
+import heroBanner from "@/assets/hero-banner.png";
 import cast1 from "/assets/cast1.jpg";
 import cast2 from "/assets/cast2.jpg";
 import cast3 from "/assets/cast3.jpg";
@@ -22,10 +16,10 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "8 nerds. 1 city. Unlimited delusion. The mockumentary about Hollywood's most emotionally investigative men. Streaming now." },
       { property: "og:title", content: "CreepyStalkers: Hollywood" },
       { property: "og:description", content: "8 nerds. 1 city. Unlimited delusion. Streaming now." },
-      { property: "og:image", content: hero },
+      { property: "og:image", content: heroBanner },
       { property: "og:type", content: "video.tv_show" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: hero },
+      { name: "twitter:image", content: heroBanner },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -35,15 +29,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-const episodes = [
-  { n: 1, title: "Namasté in Her DMs", img: ep1, runtime: "47m", desc: "Trevor crafts a 9-paragraph response to a heart emoji." },
-  { n: 2, title: "Hot Yoga, Cold Shoulder", img: ep2, runtime: "52m", desc: "An ill-advised front-row mat changes everything." },
-  { n: 3, title: "The Erewhon Incident", img: ep3, runtime: "44m", desc: "Eli stalks a $19 smoothie across three aisles." },
-  { n: 4, title: "Operation: Accidental Encounter", img: ep4, runtime: "49m", desc: "Kevin schedules a chance meeting down to the second." },
-  { n: 5, title: "Sunset Boulevard Surveillance", img: ep5, runtime: "55m", desc: "A trench coat. A telephoto. A profound misunderstanding." },
-  { n: 6, title: "Downward Dog, Upward Delusion", img: ep6, runtime: "51m", desc: "Darren misreads spiritual energy as romantic destiny." },
-];
 
 const cast = [
   { name: "Trevor", role: "The Analyst", img: cast1, stat: "Eye Contact Success Rate", val: "0.4%" },
