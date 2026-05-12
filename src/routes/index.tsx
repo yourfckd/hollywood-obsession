@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Play, ChevronLeft, ChevronRight, Star, Volume2, Flame, Users, Search, User } from "lucide-react";
 import logo from "/assets/creepy-logo.png";
-import hero from "/assets/hero.jpg";
+import hero from "/assets/hero-stalker.jpg";
 import ep1 from "/assets/ep1.jpg";
 import ep2 from "/assets/ep2.jpg";
 import ep3 from "/assets/ep3.jpg";
