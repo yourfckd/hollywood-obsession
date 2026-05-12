@@ -101,26 +101,11 @@ function Index() {
       </header>
 
       {/* HERO — rebuilt from scratch */}
-      <section className="relative min-h-screen w-full overflow-hidden pt-24">
-        {/* Background image */}
-        <img
-          src={hero}
-          alt="CreepyStalkers: Hollywood"
-          width={1920}
-          height={1080}
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
-        {/* Left fade for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 via-30% to-transparent md:via-background/80" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+      <section className="relative min-h-screen w-full overflow-hidden bg-background pt-24">
+        <div className="lens-flare drift right-[10%] top-[20%] h-[500px] w-[500px] opacity-30" />
 
-        {/* Floating REC */}
-        <div className="absolute right-[28%] top-[22%] z-10 hidden items-center gap-2 rounded border border-rec/60 bg-background/40 px-3 py-1.5 backdrop-blur lg:flex">
-          <span className="rec-dot h-2 w-2 rounded-full bg-rec" />
-          <span className="font-mono text-xs font-bold tracking-[0.25em] text-rec">REC</span>
-        </div>
-
-        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-6rem)] max-w-[1600px] grid-cols-1 items-center px-6 pb-16 md:grid-cols-2 md:px-12">
+        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-6rem)] max-w-[1600px] grid-cols-1 items-center gap-10 px-6 pb-16 lg:grid-cols-[1fr_1.1fr] lg:px-12">
+          {/* LEFT: copy */}
           <div className="fade-up max-w-2xl">
             <p className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-foreground/80">
               A <span className="text-rec">STALKERVILLE</span> ORIGINAL DOCUSERIES
@@ -185,6 +170,64 @@ function Index() {
                 <span className="rec-dot h-1.5 w-1.5 rounded-full bg-rec" />
                 <span className="font-mono text-[10px] font-bold tracking-widest text-rec">REC</span>
               </div>
+            </div>
+          </div>
+
+          {/* RIGHT: interactive image */}
+          <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-lg border border-border/40 shadow-[var(--shadow-cinematic)] lg:aspect-[5/6]">
+            <img
+              src={hero}
+              alt="CreepyStalkers: Hollywood — surveillance still"
+              width={1280}
+              height={1280}
+              className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+            />
+            {/* Camera viewfinder corner brackets */}
+            <div className="pointer-events-none absolute inset-0">
+              <span className="absolute left-4 top-4 h-6 w-6 border-l-2 border-t-2 border-cream/70" />
+              <span className="absolute right-4 top-4 h-6 w-6 border-r-2 border-t-2 border-cream/70" />
+              <span className="absolute bottom-4 left-4 h-6 w-6 border-b-2 border-l-2 border-cream/70" />
+              <span className="absolute bottom-4 right-4 h-6 w-6 border-b-2 border-r-2 border-cream/70" />
+            </div>
+            {/* Scanline / film grain overlay */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-background/10" />
+
+            {/* REC badge */}
+            <div className="absolute left-5 top-5 flex items-center gap-2 rounded border border-rec/70 bg-background/60 px-2.5 py-1.5 backdrop-blur">
+              <span className="rec-dot h-2 w-2 rounded-full bg-rec" />
+              <span className="font-mono text-xs font-bold tracking-[0.25em] text-rec">REC</span>
+            </div>
+
+            {/* Timecode */}
+            <div className="absolute right-5 top-5 rounded border border-cream/30 bg-background/60 px-2.5 py-1.5 font-mono text-[10px] tracking-widest text-cream/80 backdrop-blur">
+              17:42:03 · CH 04
+            </div>
+
+            {/* TARGET sticky note — slides in on hover */}
+            <div className="absolute right-4 top-20 w-44 -rotate-3 transform rounded-sm bg-[#f3e9c7] p-3 text-[10px] leading-tight text-[#3a2a18] shadow-xl transition-all duration-500 hover:rotate-0 hover:scale-105 sm:right-6 sm:top-24">
+              <p className="mb-1.5 font-bold uppercase tracking-wider underline">Target:</p>
+              <ul className="space-y-1 font-mono">
+                <li className="flex justify-between"><span>Morning Class</span><span>☑</span></li>
+                <li className="flex justify-between"><span>Matcha Run</span><span>☑</span></li>
+                <li className="flex justify-between"><span>Erewhon</span><span>☑</span></li>
+                <li className="flex justify-between"><span>Sunset Flow</span><span>☑</span></li>
+              </ul>
+              <p className="mt-2 text-center text-[11px] font-bold uppercase text-rec">Engage?</p>
+            </div>
+
+            {/* Water bottle annotation */}
+            <div className="absolute bottom-20 right-6 max-w-[140px] -rotate-1 rounded bg-background/80 px-3 py-2 font-display text-xs italic leading-tight text-cream shadow-lg backdrop-blur transition-all duration-500 group-hover:-translate-y-1 group-hover:rotate-0">
+              <span className="block text-[9px] uppercase tracking-widest text-foreground/60">Bottle reads:</span>
+              "Namasté out of my league"
+            </div>
+
+            {/* Caption bar */}
+            <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between border-t border-border/40 bg-background/70 px-5 py-3 backdrop-blur">
+              <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-cream/80">
+                <span className="h-1.5 w-1.5 rounded-full bg-rec rec-dot" />
+                Subject 07 · Eli K. · Sunset Yoga Co.
+              </div>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-foreground/60">Day 47</span>
             </div>
           </div>
         </div>
