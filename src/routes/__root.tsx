@@ -82,8 +82,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Creepy" },
       { name: "twitter:description", content: "A cinematic landing page for a satirical Netflix-style documentary series about socially awkward men in Hollywood." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/UdivYYPWEfOHqLA7ILzeWrg47ue2/social-images/social-1778136531239-creepy_logo.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/UdivYYPWEfOHqLA7ILzeWrg47ue2/social-images/social-1778136531239-creepy_logo.webp" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/UdivYYPWEfOHqLA7ILzeWrg47ue2/social-images/social-1778637601313-creepy_logo.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/UdivYYPWEfOHqLA7ILzeWrg47ue2/social-images/social-1778637601313-creepy_logo.webp" },
     ],
     links: [
       {
