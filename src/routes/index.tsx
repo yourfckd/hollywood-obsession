@@ -72,7 +72,8 @@ function Index() {
     <main className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
       {/* HERO — full-bleed cinematic banner */}
       <section className="relative w-full overflow-hidden bg-background">
-        <div className="relative w-full" style={{ aspectRatio: "1536 / 1024" }}>
+        {/* Desktop hero */}
+        <div className="relative hidden w-full md:block" style={{ aspectRatio: "1536 / 1024" }}>
           <img
             src={heroBanner}
             alt="CreepyStalkers: Hollywood — A Stalkerville Original Docuseries"
@@ -84,24 +85,44 @@ function Index() {
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/40" />
 
           {/* Invisible functional overlay buttons */}
-          <button
-            type="button"
+          <a
+            href={TRAILER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Watch Trailer"
-            onClick={() => scrollToSection("trailer")}
             className="absolute cursor-pointer rounded-md opacity-0 transition-shadow duration-300 hover:opacity-100 hover:shadow-[0_0_40px_8px_oklch(0.6_0.25_25_/_0.55)] focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rec"
-            style={{ left: "3.9%", top: "71.8%", width: "18.2%", height: "7.3%" }}
+            style={{ left: "3.9%", top: "70.9%", width: "15%", height: "6.3%" }}
           >
             <span className="sr-only">Watch Trailer</span>
-          </button>
+          </a>
           <button
             type="button"
             aria-label="Meet the Suspects"
             onClick={() => scrollToSection("cast")}
             className="absolute cursor-pointer rounded-md opacity-0 transition-shadow duration-300 hover:opacity-100 hover:shadow-[0_0_30px_4px_oklch(0.96_0.04_85_/_0.45)] hover:ring-2 hover:ring-cream/70 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream"
-            style={{ left: "22.8%", top: "71.8%", width: "18.5%", height: "7.3%" }}
+            style={{ left: "21.2%", top: "70.9%", width: "17.6%", height: "6.3%" }}
           >
             <span className="sr-only">Meet the Suspects</span>
           </button>
+        </div>
+
+        {/* Mobile hero */}
+        <div className="relative block w-full md:hidden" style={{ aspectRatio: "847 / 1505" }}>
+          <img
+            src={heroMobile}
+            alt="CreepyStalkers: Hollywood — A Stalkerville Original Docuseries"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <a
+            href={TRAILER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch Trailer"
+            className="absolute cursor-pointer rounded-md opacity-0 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rec"
+            style={{ left: "3.5%", top: "89.8%", width: "93%", height: "9%" }}
+          >
+            <span className="sr-only">Watch Trailer</span>
+          </a>
         </div>
       </section>
 
