@@ -73,7 +73,7 @@ function Index() {
       {/* HERO — full-bleed cinematic banner */}
       <section className="relative w-full overflow-hidden bg-background">
         {/* Desktop hero */}
-        <div className="relative hidden w-full md:block" style={{ aspectRatio: "1536 / 1024" }}>
+        <div className="relative hidden w-full sm:block" style={{ aspectRatio: "1536 / 1024" }}>
           <img
             src={heroBanner}
             alt="CreepyStalkers: Hollywood — A Stalkerville Original Docuseries"
@@ -107,7 +107,7 @@ function Index() {
         </div>
 
         {/* Mobile hero */}
-        <div className="relative block w-full md:hidden" style={{ aspectRatio: "847 / 1505" }}>
+        <div className="relative block w-full sm:hidden" style={{ aspectRatio: "847 / 1505" }}>
           <img
             src={heroMobile}
             alt="CreepyStalkers: Hollywood — A Stalkerville Original Docuseries"
