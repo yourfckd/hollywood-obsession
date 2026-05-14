@@ -126,6 +126,37 @@ function Index() {
         </div>
       </section>
 
+      {/* EPISODES */}
+      <section id="episodes" className="relative py-24 md:py-32">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="mb-14 max-w-2xl">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-rec">The Series</p>
+            <h2 className="font-display text-4xl font-bold text-cream md:text-6xl">
+              Six episodes. <span className="italic text-gradient-gold">Zero restraint.</span>
+            </h2>
+            <p className="mt-5 text-foreground/70">
+              Every Tuesday at 7:08 AM. She's wearing the same outfit. It means something.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {episodes.map((ep) => (
+              <article
+                key={ep.num}
+                className="episode-card group relative overflow-hidden rounded-xl border border-border/40 bg-card/40"
+              >
+                <img
+                  src={ep.img}
+                  alt={`Episode ${ep.num}: ${ep.title}`}
+                  loading="lazy"
+                  className="block h-auto w-full object-cover"
+                />
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CAST */}
       <section id="cast" className="relative py-24 md:py-32">
         <div className="lens-flare left-[10%] top-[20%] h-[300px] w-[300px] opacity-50" />
@@ -217,48 +248,6 @@ function Index() {
                   <span className="rounded bg-primary/15 px-2 py-1 font-mono text-xs font-bold text-primary">{r.score}</span>
                 </figcaption>
               </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* EPISODES */}
-      <section id="episodes" className="relative py-24 md:py-32">
-        <div className="mx-auto max-w-[1600px] px-6 md:px-12">
-          <div className="mb-14 max-w-2xl">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-rec">The Series</p>
-            <h2 className="font-display text-4xl font-bold text-cream md:text-6xl">
-              Six episodes. <span className="italic text-gradient-gold">Zero restraint.</span>
-            </h2>
-            <p className="mt-5 text-foreground/70">
-              Every Tuesday at 7:08 AM. She's wearing the same outfit. It means something.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {episodes.map((ep) => (
-              <article
-                key={ep.num}
-                className="episode-card group relative overflow-hidden rounded-xl border border-border/40 bg-card/40"
-              >
-                <div className="relative aspect-[3/2] overflow-hidden">
-                  <img
-                    src={ep.img}
-                    alt={`Episode ${ep.num}: ${ep.title}`}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-                  <div className="absolute right-3 top-3 rounded bg-background/70 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-cream backdrop-blur">
-                    EP 0{ep.num}
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.25em] text-rec">Episode {ep.num}</p>
-                  <h3 className="font-display text-2xl font-bold leading-tight text-cream md:text-3xl">{ep.title}</h3>
-                  <p className="mt-2 text-sm text-foreground/70">{ep.tagline}</p>
-                </div>
-              </article>
             ))}
           </div>
         </div>
