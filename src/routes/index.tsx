@@ -222,16 +222,62 @@ function Index() {
         </div>
       </section>
 
+      {/* EPISODES */}
+      <section id="episodes" className="relative py-24 md:py-32">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="mb-14 max-w-2xl">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-rec">The Series</p>
+            <h2 className="font-display text-4xl font-bold text-cream md:text-6xl">
+              Six episodes. <span className="italic text-gradient-gold">Zero restraint.</span>
+            </h2>
+            <p className="mt-5 text-foreground/70">
+              Every Tuesday at 7:08 AM. She's wearing the same outfit. It means something.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {episodes.map((ep) => (
+              <article
+                key={ep.num}
+                className="episode-card group relative overflow-hidden rounded-xl border border-border/40 bg-card/40"
+              >
+                <div className="relative aspect-[3/2] overflow-hidden">
+                  <img
+                    src={ep.img}
+                    alt={`Episode ${ep.num}: ${ep.title}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+                  <div className="absolute right-3 top-3 rounded bg-background/70 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-cream backdrop-blur">
+                    EP 0{ep.num}
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.25em] text-rec">Episode {ep.num}</p>
+                  <h3 className="font-display text-2xl font-bold leading-tight text-cream md:text-3xl">{ep.title}</h3>
+                  <p className="mt-2 text-sm text-foreground/70">{ep.tagline}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section id="trailer" className="relative overflow-hidden">
         <div className="relative min-h-[90vh] w-full">
           <img
+            src={footerDesktop}
+            alt="The investigation never stops"
+            loading="lazy"
+            className="absolute inset-0 hidden h-full w-full object-cover md:block"
+          />
+          <img
             src={finale}
             alt="Hollywood Hills sunset"
             loading="lazy"
-            width={1920}
-            height={1080}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 block h-full w-full object-cover md:hidden"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/30" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/40" />
@@ -248,9 +294,14 @@ function Index() {
               All six episodes streaming now. Watch responsibly.
             </p>
 
-            <button className="group mt-10 flex items-center gap-3 rounded-md bg-cream px-10 py-4 text-base font-bold text-background shadow-[var(--shadow-glow)] transition hover:scale-[1.04] hover:brightness-110">
+            <a
+              href={TRAILER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-10 hidden items-center gap-3 rounded-md bg-cream px-10 py-4 text-base font-bold text-background shadow-[var(--shadow-glow)] transition hover:scale-[1.04] hover:brightness-110 md:flex"
+            >
               <Play className="h-5 w-5 fill-background" /> Start Watching
-            </button>
+            </a>
 
             <div className="mt-12 flex items-center gap-3 rounded-full border border-border/50 bg-background/40 px-5 py-2 backdrop-blur">
               <Volume2 className="h-3.5 w-3.5 text-foreground/60" />
