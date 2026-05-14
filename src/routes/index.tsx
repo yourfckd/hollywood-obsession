@@ -2,11 +2,30 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Play, Star, Volume2 } from "lucide-react";
 import logo from "/assets/creepy-logo.png";
 import heroBanner from "@/assets/hero-banner.png";
+import heroMobile from "@/assets/hero-mobile.jpg";
+import footerDesktop from "@/assets/footer-desktop.jpg";
 import cast1 from "/assets/cast1.jpg";
 import cast2 from "/assets/cast2.jpg";
 import cast3 from "/assets/cast3.jpg";
 import cast4 from "/assets/cast4.jpg";
 import finale from "/assets/finale.jpg";
+import episode1 from "@/assets/episode1.jpg";
+import episode2 from "@/assets/episode2.jpg";
+import episode3 from "@/assets/episode3.jpg";
+import episode4 from "@/assets/episode4.jpg";
+import episode5 from "@/assets/episode5.jpg";
+import episode6 from "@/assets/episode6.jpg";
+
+const TRAILER_URL = "https://youtube.com/shorts/LkjwoUb0HZc?feature=share";
+
+const episodes = [
+  { num: 1, title: "Namasté in Her DMs", tagline: "The first message is always the beginning of something.", img: episode1 },
+  { num: 2, title: "Hot Yoga, Cold Shoulder", tagline: "She's not ignoring you. You're just not the one.", img: episode2 },
+  { num: 3, title: "The Erewhon Incident", tagline: "A $24 smoothie. A 45-minute wait. A lifetime of overanalyzing.", img: episode3 },
+  { num: 4, title: "Operation: Accidental Encounter", tagline: "It's not stalking. It's fate. With a little planning.", img: episode4 },
+  { num: 5, title: "Sunset Boulevard Surveillance", tagline: "You can run. But can you hide in LA?", img: episode5 },
+  { num: 6, title: "Downward Dog, Upward Delusion", tagline: "The deeper the stretch, the further from reality.", img: episode6 },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -53,7 +72,8 @@ function Index() {
     <main className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
       {/* HERO — full-bleed cinematic banner */}
       <section className="relative w-full overflow-hidden bg-background">
-        <div className="relative w-full" style={{ aspectRatio: "1536 / 1024" }}>
+        {/* Desktop hero */}
+        <div className="relative hidden w-full md:block" style={{ aspectRatio: "1536 / 1024" }}>
           <img
             src={heroBanner}
             alt="CreepyStalkers: Hollywood — A Stalkerville Original Docuseries"
@@ -65,24 +85,44 @@ function Index() {
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/40" />
 
           {/* Invisible functional overlay buttons */}
-          <button
-            type="button"
+          <a
+            href={TRAILER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Watch Trailer"
-            onClick={() => scrollToSection("trailer")}
             className="absolute cursor-pointer rounded-md opacity-0 transition-shadow duration-300 hover:opacity-100 hover:shadow-[0_0_40px_8px_oklch(0.6_0.25_25_/_0.55)] focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rec"
-            style={{ left: "3.9%", top: "71.8%", width: "18.2%", height: "7.3%" }}
+            style={{ left: "3.9%", top: "70.9%", width: "15%", height: "6.3%" }}
           >
             <span className="sr-only">Watch Trailer</span>
-          </button>
+          </a>
           <button
             type="button"
             aria-label="Meet the Suspects"
             onClick={() => scrollToSection("cast")}
             className="absolute cursor-pointer rounded-md opacity-0 transition-shadow duration-300 hover:opacity-100 hover:shadow-[0_0_30px_4px_oklch(0.96_0.04_85_/_0.45)] hover:ring-2 hover:ring-cream/70 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream"
-            style={{ left: "22.8%", top: "71.8%", width: "18.5%", height: "7.3%" }}
+            style={{ left: "21.2%", top: "70.9%", width: "17.6%", height: "6.3%" }}
           >
             <span className="sr-only">Meet the Suspects</span>
           </button>
+        </div>
+
+        {/* Mobile hero */}
+        <div className="relative block w-full md:hidden" style={{ aspectRatio: "847 / 1505" }}>
+          <img
+            src={heroMobile}
+            alt="CreepyStalkers: Hollywood — A Stalkerville Original Docuseries"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <a
+            href={TRAILER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch Trailer"
+            className="absolute cursor-pointer rounded-md opacity-0 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rec"
+            style={{ left: "3.5%", top: "89.8%", width: "93%", height: "9%" }}
+          >
+            <span className="sr-only">Watch Trailer</span>
+          </a>
         </div>
       </section>
 
@@ -182,16 +222,62 @@ function Index() {
         </div>
       </section>
 
+      {/* EPISODES */}
+      <section id="episodes" className="relative py-24 md:py-32">
+        <div className="mx-auto max-w-[1600px] px-6 md:px-12">
+          <div className="mb-14 max-w-2xl">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-rec">The Series</p>
+            <h2 className="font-display text-4xl font-bold text-cream md:text-6xl">
+              Six episodes. <span className="italic text-gradient-gold">Zero restraint.</span>
+            </h2>
+            <p className="mt-5 text-foreground/70">
+              Every Tuesday at 7:08 AM. She's wearing the same outfit. It means something.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {episodes.map((ep) => (
+              <article
+                key={ep.num}
+                className="episode-card group relative overflow-hidden rounded-xl border border-border/40 bg-card/40"
+              >
+                <div className="relative aspect-[3/2] overflow-hidden">
+                  <img
+                    src={ep.img}
+                    alt={`Episode ${ep.num}: ${ep.title}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+                  <div className="absolute right-3 top-3 rounded bg-background/70 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-cream backdrop-blur">
+                    EP 0{ep.num}
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.25em] text-rec">Episode {ep.num}</p>
+                  <h3 className="font-display text-2xl font-bold leading-tight text-cream md:text-3xl">{ep.title}</h3>
+                  <p className="mt-2 text-sm text-foreground/70">{ep.tagline}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section id="trailer" className="relative overflow-hidden">
         <div className="relative min-h-[90vh] w-full">
           <img
+            src={footerDesktop}
+            alt="The investigation never stops"
+            loading="lazy"
+            className="absolute inset-0 hidden h-full w-full object-cover md:block"
+          />
+          <img
             src={finale}
             alt="Hollywood Hills sunset"
             loading="lazy"
-            width={1920}
-            height={1080}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 block h-full w-full object-cover md:hidden"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/30" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/40" />
@@ -208,9 +294,14 @@ function Index() {
               All six episodes streaming now. Watch responsibly.
             </p>
 
-            <button className="group mt-10 flex items-center gap-3 rounded-md bg-cream px-10 py-4 text-base font-bold text-background shadow-[var(--shadow-glow)] transition hover:scale-[1.04] hover:brightness-110">
+            <a
+              href={TRAILER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-10 hidden items-center gap-3 rounded-md bg-cream px-10 py-4 text-base font-bold text-background shadow-[var(--shadow-glow)] transition hover:scale-[1.04] hover:brightness-110 md:flex"
+            >
               <Play className="h-5 w-5 fill-background" /> Start Watching
-            </button>
+            </a>
 
             <div className="mt-12 flex items-center gap-3 rounded-full border border-border/50 bg-background/40 px-5 py-2 backdrop-blur">
               <Volume2 className="h-3.5 w-3.5 text-foreground/60" />
