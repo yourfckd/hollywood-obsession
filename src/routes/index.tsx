@@ -274,27 +274,17 @@ function Index() {
           <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/40" />
           <div className="lens-flare drift left-[20%] top-[30%] h-[500px] w-[500px] opacity-70" />
 
-          <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-[1600px] flex-col items-center justify-center px-6 py-24 text-center md:px-12">
-            <img src={logo} alt="CreepyStalkers" className="mb-8 h-16 w-auto md:h-24 drop-shadow-[0_4px_30px_rgba(0,0,0,0.7)]" />
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.4em] text-primary">A Streaming Original</p>
-            <h2 className="font-display text-5xl font-black leading-[0.95] text-cream md:text-7xl lg:text-8xl">
-              The investigation <br />
-              <span className="italic text-gradient-gold">never stops.</span>
-            </h2>
-            <p className="mt-7 max-w-xl text-base font-light text-foreground/80 md:text-lg">
-              All six episodes streaming now. Watch responsibly.
-            </p>
-
+          <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-[1600px] flex-col items-center justify-end px-6 pb-16 pt-24 text-center md:px-12">
             <a
               href={TRAILER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-10 hidden items-center gap-3 rounded-md bg-cream px-10 py-4 text-base font-bold text-background shadow-[var(--shadow-glow)] transition hover:scale-[1.04] hover:brightness-110 md:flex"
+              className="group hidden items-center gap-3 rounded-md bg-cream px-10 py-4 text-base font-bold text-background shadow-[var(--shadow-glow)] transition hover:scale-[1.04] hover:brightness-110 md:flex"
             >
               <Play className="h-5 w-5 fill-background" /> Start Watching
             </a>
 
-            <div className="mt-12 flex items-center gap-3 rounded-full border border-border/50 bg-background/40 px-5 py-2 backdrop-blur">
+            <div className="mt-8 flex items-center gap-3 rounded-full border border-border/50 bg-background/40 px-5 py-2 backdrop-blur">
               <Volume2 className="h-3.5 w-3.5 text-foreground/60" />
               <span className="text-xs uppercase tracking-widest text-foreground/60">Dolby Atmos · 4K HDR</span>
             </div>
