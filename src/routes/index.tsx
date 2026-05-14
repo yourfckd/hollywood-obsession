@@ -145,12 +145,14 @@ function Index() {
                 key={ep.num}
                 className="episode-card group relative overflow-hidden rounded-xl border border-border/40 bg-card/40"
               >
-                <img
-                  src={ep.img}
-                  alt={`Episode ${ep.num}: ${ep.title}`}
-                  loading="lazy"
-                  className="block h-auto w-full object-cover"
-                />
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: "3 / 2" }}>
+                  <img
+                    src={ep.img}
+                    alt={`Episode ${ep.num}: ${ep.title}`}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                </div>
               </article>
             ))}
           </div>
