@@ -2,11 +2,30 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Play, Star, Volume2 } from "lucide-react";
 import logo from "/assets/creepy-logo.png";
 import heroBanner from "@/assets/hero-banner.png";
+import heroMobile from "@/assets/hero-mobile.jpg";
+import footerDesktop from "@/assets/footer-desktop.jpg";
 import cast1 from "/assets/cast1.jpg";
 import cast2 from "/assets/cast2.jpg";
 import cast3 from "/assets/cast3.jpg";
 import cast4 from "/assets/cast4.jpg";
 import finale from "/assets/finale.jpg";
+import episode1 from "@/assets/episode1.jpg";
+import episode2 from "@/assets/episode2.jpg";
+import episode3 from "@/assets/episode3.jpg";
+import episode4 from "@/assets/episode4.jpg";
+import episode5 from "@/assets/episode5.jpg";
+import episode6 from "@/assets/episode6.jpg";
+
+const TRAILER_URL = "https://youtube.com/shorts/LkjwoUb0HZc?feature=share";
+
+const episodes = [
+  { num: 1, title: "Namasté in Her DMs", tagline: "The first message is always the beginning of something.", img: episode1 },
+  { num: 2, title: "Hot Yoga, Cold Shoulder", tagline: "She's not ignoring you. You're just not the one.", img: episode2 },
+  { num: 3, title: "The Erewhon Incident", tagline: "A $24 smoothie. A 45-minute wait. A lifetime of overanalyzing.", img: episode3 },
+  { num: 4, title: "Operation: Accidental Encounter", tagline: "It's not stalking. It's fate. With a little planning.", img: episode4 },
+  { num: 5, title: "Sunset Boulevard Surveillance", tagline: "You can run. But can you hide in LA?", img: episode5 },
+  { num: 6, title: "Downward Dog, Upward Delusion", tagline: "The deeper the stretch, the further from reality.", img: episode6 },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
