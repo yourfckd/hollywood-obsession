@@ -150,7 +150,7 @@ function Index() {
                     src={ep.img}
                     alt={`Episode ${ep.num}: ${ep.title}`}
                     loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className={`absolute inset-0 h-full w-full ${ep.num === 6 ? "object-fill" : "object-cover"}`}
                   />
                 </div>
               </article>
