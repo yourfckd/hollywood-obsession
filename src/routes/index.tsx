@@ -139,11 +139,11 @@ function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {episodes.map((ep) => (
               <article
                 key={ep.num}
-                className="episode-card group relative overflow-hidden rounded-xl border border-border/40 bg-card/40"
+                className="relative overflow-hidden rounded-xl border border-border/40 bg-card/40"
               >
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: "3 / 2" }}>
                   <img
